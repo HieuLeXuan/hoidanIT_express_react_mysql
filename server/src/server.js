@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 viewEngine(app);
-initWebRoutes(app)
+initWebRoutes(app);
 
 let port = process.env.PORT || 8081;
 app.listen(port, () => {
