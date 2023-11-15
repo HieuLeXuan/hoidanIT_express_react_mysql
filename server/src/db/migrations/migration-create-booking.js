@@ -2,11 +2,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        // statusId: DataTypes.STRING,
-        // doctorId: DataTypes.STRING,
-        // patientId: DataTypes.STRING,
-        // date: DataTypes.DATE,
-        // timeType: DataTypes.STRING
         await queryInterface.createTable('bookings', {
             id: {
                 allowNull: false,

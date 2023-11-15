@@ -2,11 +2,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        // currentNumber: DataTypes.INTEGER,
-        // maxNumber: DataTypes.INTEGER,
-        // date: DataTypes.DATE,
-        // timeType: DataTypes.STRING,
-        // docterId: DataTypes.STRING
         await queryInterface.createTable('schedules', {
             id: {
                 allowNull: false,

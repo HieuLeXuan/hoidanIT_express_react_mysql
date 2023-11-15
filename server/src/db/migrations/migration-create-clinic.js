@@ -2,10 +2,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        // address: DataTypes.STRING,
-        // description: DataTypes.STRING,
-        // patientId: DataTypes.STRING,
-        // image: DataTypes.STRING
         await queryInterface.createTable('clinics', {
             id: {
                 allowNull: false,

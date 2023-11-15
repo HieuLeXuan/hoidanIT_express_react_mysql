@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     }
-    User.init({
+    Booking.init({
         statusId: DataTypes.INTEGER,
         doctorId: DataTypes.INTEGER,
         patientId: DataTypes.INTEGER,
