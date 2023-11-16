@@ -11,6 +11,12 @@ const initWebRoutes = (app) => {
   // crud route
   router.get('/crud', homeController.getCrudPage);
 
+  // get edit crud
+  router.get('/edit-crud', homeController.getEditCrudPage);
+
+  // post user (update user)
+  router.post('/put-crud', homeController.updateUser);
+
   // display all crud
   router.get('/display-crud', homeController.getAllCrudPage);
 
