@@ -11,6 +11,9 @@ const initWebRoutes = (app) => {
   // crud route
   router.get('/crud', homeController.getCrudPage);
 
+  // display all crud
+  router.get('/display-crud', homeController.getAllCrudPage);
+
   // post crud
   router.post('/post-crud', homeController.createUser);
 

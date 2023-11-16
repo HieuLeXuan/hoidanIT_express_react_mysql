@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Display crud</title>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <table class="table-fixed">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i<dataTable.length; i++) {%>
+                    <tr>
+                        <td>
+                            <%= dataTable[i].firstName %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].lastName %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].email %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

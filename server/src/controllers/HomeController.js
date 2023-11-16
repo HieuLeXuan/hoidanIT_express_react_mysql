@@ -22,8 +22,14 @@ let getCrudPage = (req, res) => {
     res.render('CRUD.ejs');
 }
 
+let getAllCrudPage = async (req, res) => {
+    let data = await crudService.getAllCrud();
+    return res.render('DisplayCRUD.ejs', { dataTable: data });
+}
+
 module.exports = {
     getHomePage: getHomePage,
     getCrudPage: getCrudPage,
     createUser: createUser,
+    getAllCrudPage: getAllCrudPage
 }
