@@ -2,7 +2,6 @@ import db from '../db/models/index';
 import crudService from '../services/CrudService';
 
 let createUser = async (req, res) => {
-    // console.log(req.body);
     let message = await crudService.createNewUser(req.body);
     console.log(message);
     return res.render('HomePage.ejs');
@@ -43,6 +42,17 @@ let updateUser = async (req, res) => {
     return res.render('DisplayCRUD.ejs', { dataTable: users });
 }
 
+let deleteUser = async (req, res) => {
+    let id = req.query.id;
+
+    if (id) {
+        await crudService.deleteUserService(id);
+        return res.send('delete the use successfully!');
+    } else {
+        return res.send('user not found!');
+    }
+}
+
 module.exports = {
     getHomePage: getHomePage,
     getCrudPage: getCrudPage,
@@ -50,4 +60,5 @@ module.exports = {
     getAllCrudPage: getAllCrudPage,
     getEditCrudPage: getEditCrudPage,
     updateUser: updateUser,
+    deleteUser: deleteUser
 }

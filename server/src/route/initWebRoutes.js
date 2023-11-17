@@ -1,6 +1,7 @@
 // webRoutes.js
 import express from 'express';
 import homeController from '../controllers/HomeController';
+import userController from '../controllers/UserController';
 
 const initWebRoutes = (app) => {
   const router = express.Router();
@@ -17,11 +18,17 @@ const initWebRoutes = (app) => {
   // post user (update user)
   router.post('/put-crud', homeController.updateUser);
 
+  // delete user
+  router.get('/delete-crud', homeController.deleteUser);
+
   // display all crud
   router.get('/display-crud', homeController.getAllCrudPage);
 
   // post crud
   router.post('/post-crud', homeController.createUser);
+
+  // api login
+  router.get('/api/login', userController.handleLogin);
 
   // Thêm router vào ứng dụng
   app.use('/', router);
