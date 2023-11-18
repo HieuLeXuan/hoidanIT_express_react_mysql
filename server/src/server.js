@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 const app = express();
 require('dotenv').config();
 
@@ -8,6 +9,16 @@ import initWebRoutes from './route/initWebRoutes';
 
 // Middleware để ghi lại log khi thực hiện bất kỳ request nào
 app.use(morgan('combined'))
+
+// Cors
+app.use(cors(
+    {
+        origin: 'http://localhost:3000',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true, // enable cookies
+        optionsSuccessStatus: 204,
+    }
+));
 
 // Middleware để xử lý JSON
 app.use(express.json());

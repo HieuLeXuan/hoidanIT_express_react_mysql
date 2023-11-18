@@ -28,7 +28,7 @@ const initWebRoutes = (app) => {
   router.post('/post-crud', homeController.createUser);
 
   // api login
-  router.get('/api/login', userController.handleLogin);
+  router.post('/api/login', userController.handleLogin);
 
   // Thêm router vào ứng dụng
   app.use('/', router);
