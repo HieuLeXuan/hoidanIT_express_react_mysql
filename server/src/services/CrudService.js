@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 const createNewUser = async (data) => {
-    // console.log(`constroller ${data}`);
     return new Promise(async (resolve, reject) => {
         try {
             const hashPasswordFromBcrypt = await bcryptPassword(data.password);
@@ -39,9 +38,7 @@ const bcryptPassword = (password) => {
 const getAllCrud = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let users = await db.User.findAll({
-                raw: true
-            })
+            let users = await db.User.findAll();
             resolve(users);
         } catch (e) {
             reject(e);
@@ -53,9 +50,8 @@ const getUserById = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
-                where: { id: id },
-                raw: true
-            })
+                where: { id: id }
+            });
 
             if (user) {
                 resolve(user)

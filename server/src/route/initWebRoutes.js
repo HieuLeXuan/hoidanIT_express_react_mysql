@@ -29,6 +29,8 @@ const initWebRoutes = (app) => {
 
   // api login
   router.post('/api/login', userController.handleLogin);
+  // api get all users
+  router.get('/api/get-all-users', userController.handlegetAllUsers);
 
   // Thêm router vào ứng dụng
   app.use('/', router);

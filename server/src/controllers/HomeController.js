@@ -3,7 +3,6 @@ import crudService from '../services/CrudService';
 
 let createUser = async (req, res) => {
     let message = await crudService.createNewUser(req.body);
-    console.log(message);
     return res.render('HomePage.ejs');
 }
 
