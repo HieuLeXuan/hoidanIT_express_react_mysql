@@ -20,8 +20,8 @@ let handleLogin = async (req, res) => {
     });
 }
 
-let handlegetAllUsers = async (req, res) => {
-    let userId = req.body.type; // All, id
+let handleGetAllUsers = async (req, res) => {
+    let userId = req.query.id; // All, id
 
     if (!userId) {
         return res.status(200).json({
@@ -41,5 +41,5 @@ let handlegetAllUsers = async (req, res) => {
 
 module.exports = {
     handleLogin: handleLogin,
-    handlegetAllUsers: handlegetAllUsers
+    handleGetAllUsers: handleGetAllUsers
 }
