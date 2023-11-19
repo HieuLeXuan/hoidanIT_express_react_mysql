@@ -30,7 +30,13 @@ const initWebRoutes = (app) => {
   // api login
   router.post('/api/login', userController.handleLogin);
   // api get all users
-  router.get('/api/get-all-users', userController.handleGetAllUsers);
+  router.get('/api/get-users/:type', userController.handleGetAllUsers);
+  // api create users
+  router.post('/api/create-user', userController.handleCreateUser);
+  // api edit users
+  router.put('/api/edit-user/:id', userController.handleEditUser);
+  // api delete users
+  router.delete('/api/delete-user/:id', userController.handleDeleteUser);
 
   // Thêm router vào ứng dụng
   app.use('/', router);

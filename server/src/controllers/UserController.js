@@ -1,4 +1,4 @@
-import userService from '../services/UserService';
+const userService = require('../services/UserService');
 
 let handleLogin = async (req, res) => {
     let email = req.body.email;
@@ -6,7 +6,7 @@ let handleLogin = async (req, res) => {
 
     if (!email || !password) {
         return res.status(500).json({
-            errCode: 1,
+            errorCode: 1,
             message: 'Missing inputs paramater!',
             data: {}
         });
@@ -14,14 +14,14 @@ let handleLogin = async (req, res) => {
 
     let userData = await userService.handleUserLogin(email, password);
     return res.status(200).json({
-        errorCode: userData.errCode,
+        errorCode: userData.errorCode,
         message: userData.errMessage,
         data: userData.user ? userData.user : {}
     });
 }
 
 let handleGetAllUsers = async (req, res) => {
-    let userId = req.query.id; // All, id
+    let userId = req.params.type; // All, id
 
     if (!userId) {
         return res.status(200).json({
@@ -39,7 +39,45 @@ let handleGetAllUsers = async (req, res) => {
     });
 }
 
+let handleCreateUser = async (req, res) => {
+    let newUser = req.body;
+    let response = await userService.createUser(newUser);
+    return res.status(200).json(response);
+}
+
+let handleEditUser = async (req, res) => {
+    let newUser = req.body;
+
+    if (!newUser) {
+        return res.status(400).json({
+            errorCode: 1,
+            message: `Data to update can not be empty`
+        });
+    }
+
+    let userId = req.params.id;
+
+    let response = await userService.editUser(newUser, userId);
+    return res.status(200).json(response);
+}
+
+let handleDeleteUser = async (req, res) => {
+    let userId = req.params.id;
+
+    if (!userId) {
+        return res.status(200).json({
+            errorCode: 1,
+            message: 'Missing requirement paramaters'
+        });
+    }
+    let resData = await userService.deleteUser(userId);
+    return res.status(200).json(resData);
+}
+
 module.exports = {
     handleLogin: handleLogin,
-    handleGetAllUsers: handleGetAllUsers
+    handleGetAllUsers: handleGetAllUsers,
+    handleCreateUser: handleCreateUser,
+    handleEditUser: handleEditUser,
+    handleDeleteUser: handleDeleteUser,
 }
